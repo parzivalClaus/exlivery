@@ -10,7 +10,11 @@ defmodule Exlivery.Orders.Agent do
   def save(%Order{} = order) do
     uuid = UUID.uuid4()
 
-    Agent.update(__MODULE__, &update_state(&1, order, uuid))
+    Agent.update(
+      __MODULE__,
+      &update_state(&1, order, uuid)
+    )
+
     {:ok, uuid}
   end
 
